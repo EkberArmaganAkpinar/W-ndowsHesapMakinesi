@@ -16,8 +16,7 @@ namespace Calculator
         bool optdurum = false;
         double sonuc = 0;
         List<double> bellek = new List<double>();
-        
-        public Form1()
+          public Form1()
         {
             InitializeComponent();
         }
@@ -42,7 +41,7 @@ namespace Calculator
                 txtsonuc.Text = sonuc.ToString();
                 opt = yeniopt;
 
-            }
+            }  
             else if (btn.Text == "CE")
             {
                 txtsonuc.Text = "0";
@@ -191,6 +190,24 @@ namespace Calculator
                 optdurum = true;
            
             }
+            else if (btn.Text == "<-")
+            {
+                if (Double.Parse(txtsonuc.Text) > 0)
+                {
+                    txtsonuc.Text = txtsonuc.Text.Remove(txtsonuc.Text.Length - 1, 1);
+                    if (txtsonuc.Text.Length==0)
+                    {
+                        txtsonuc.Text = "0"; 
+                    }
+                }
+               
+            }
+            else if (btn.Text == "%")
+            {
+                label1.Text = "0";
+                txtsonuc.Text = "0";
+
+            }
             else
             {
                 if (txtsonuc.Text == "0" || optdurum)
@@ -198,6 +215,8 @@ namespace Calculator
 
                     txtsonuc.Clear();
                 }
+                if (label1.Text == "0")
+                    label1.Text = "";
 
                 optdurum = false;
                 txtsonuc.Text += btn.Text;
@@ -205,5 +224,7 @@ namespace Calculator
             }
 
         }
+
     }
-}
+    }
+
